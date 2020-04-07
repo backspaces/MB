@@ -32,7 +32,7 @@
             import util from 'https://backspaces.github.io/agentscript/src/util.js'
             const modelParams = util.parseQueryString()
 
-            const type = Object.keys(modelParams)[0] || 'geojson'
+            const name = Object.keys(modelParams)[0] || 'geojson'
             mapboxgl.accessToken =
                 'pk.eyJ1IjoiYmFja3NwYWNlcyIsImEiOiJjanVrbzI4dncwOXl3M3ptcGJtN3oxMmhoIn0.x9iSCrtm0iADEqixVgPwqQ'
             const map = new mapboxgl.Map({
@@ -46,8 +46,16 @@
                 renderWorldCopies: false,
             })
 
-            const data =
-                type === 'geojson' ? 'roads7roads.json' : './roads7.mbtiles'
+            const types = {
+                geojson: { data: './santafe7roads.json', type: 'geojson' },
+                mb: { data: 'mapbox://backspaces.c3ezilfb', type: 'vector' },
+                vector: { data: './santafe7roads.mbtiles', type: 'vector' },
+            }
+            const { data, type } = types[name]
+            // console.log({ data })
+            // type === 'geojson'
+            //     ? './santafe7roads.json'
+            //     : 'mapbox://backspaces.c3ezilfb'
             // : 'mapbox://backspaces.04kiyweb'
             // ? 'http://backspaces.net/temp/santafe7roads.json'
             // : '../../tiles/santafe7.mbtiles'
@@ -57,7 +65,7 @@
             console.log({ type, data, id })
 
             map.on('load', function () {
-                if (type === 'vector') {
+                if (type === 'vector' || type === 'mb') {
                     map.addLayer({
                         id: id,
                         type: 'line',
