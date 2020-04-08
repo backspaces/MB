@@ -48,8 +48,10 @@
 
             const types = {
                 geojson: { data: './santafe7roads.json', type: 'geojson' },
-                mb: { data: 'mapbox://backspaces.c3ezilfb', type: 'vector' },
-                vector: { data: './santafe7roads.mbtiles', type: 'vector' },
+                vector: {
+                    data: 'mapbox://backspaces.c3ezilfb',
+                    type: 'vector',
+                },
             }
             const { data, type } = types[name]
             // console.log({ data })

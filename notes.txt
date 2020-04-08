@@ -1,0 +1,10 @@
+- bin/
+  - node: convert to agentscript umd?
+    Has to be local unless using require-from-url
+  + fix:
+    const esmImport = require('esm')(module)
+    const gis = esmImport('../../agentscript/src/gis.js').default
+    + converted to using agentscript/bin/
++ cities
+  - center on US 40.236557, -100.334228
++ csv2geojson: convert to mapbox CLI

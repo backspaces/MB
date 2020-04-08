@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>MB</title>
+        <title>Cities</title>
         <meta
             name="viewport"
             content="initial-scale=1,maximum-scale=1,user-scalable=no"
@@ -29,6 +29,9 @@
     <body>
         <div id="map"></div>
         <script type="module">
+            // cities data: https://simplemaps.com/data/us-cities as csv file
+            // geojson converrsion: https://www.convertcsv.com/csv-to-geojson.htm
+
             import util from 'https://backspaces.github.io/agentscript/src/util.js'
             import gis from 'https://backspaces.github.io/agentscript/src/gis.js'
             util.toWindow({ util, gis })
@@ -36,11 +39,11 @@
             const params = util.RESTapi({
                 min: 0,
                 max: Infinity,
+                foo: false,
             })
-            const { min: minPopulation, max: maxPopulation } = params
+            const { min: minPopulation, max: maxPopulation, foo } = params
             console.log(minPopulation, maxPopulation, params)
 
-            // const minPopulation = 1e5
             const circleRadius = Math.max(1, Math.log10(minPopulation))
 
             mapboxgl.accessToken =
@@ -51,32 +54,28 @@
                 // style: 'mapbox://styles/mapbox/satellite-v9',
                 // style: 'mapbox://styles/mapbox/dark-v10',
                 // style: 'mapbox://styles/mapbox/light-v10',
-                center: [-105.941109, 35.68222],
-                zoom: 4,
+                center: [-100.334228, 40.236557], // https://www.latlong.net/
+                zoom: 3,
                 renderWorldCopies: false,
             })
-
-            // function mapPromise(map) {
-            //     return new Promise((resolve, reject) => {
-            //         map.on('load', () => resolve())
-            //     })
-            // }
 
             map.on('load', function () {
                 async function run() {
                     let cities = await util.xhrPromise(
-                        './data/cities.geojson',
+                        './data/uscities.geojson',
                         'json'
                     )
                     util.toWindow({ map, cities })
+                    console.log(
+                        'cities count:',
+                        cities.features.length.toLocaleString()
+                    )
+
                     gis.featureFilter(
                         cities,
                         (feature) =>
                             feature.properties.population > minPopulation
                     )
-
-                    // await mapPromise(map)
-                    // console.log('map loaded')
 
                     map.addLayer({
                         id: 'cities',
@@ -94,19 +93,6 @@
                 }
                 run()
             })
-
-            // map.on('load', function () {
-            //     map.addLayer({
-            //         id: 'cities',
-            //         type: 'circle',
-            //         source: {
-            //             type: 'geojson',
-            //             data: './data/cities.geojson',
-            //         },
-            //         layout: {},
-            //         paint: { 'circle-color': 'red', 'circle-radius': 2 },
-            //     })
-            // })
         </script>
     </body>
 </html>

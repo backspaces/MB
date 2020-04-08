@@ -8,6 +8,16 @@
 //     .then(json => cities = json)
 
 let cities = await util.xhrPromise('./data/cities.geojson', 'json')
+
+// function mapPromise(map) {
+//     return new Promise((resolve, reject) => {
+//         map.on('load', () => resolve())
+//     })
+// }
+
+// await mapPromise(map)
+// console.log('map loaded')
+
 // ------------------------------
 import('../src/gis.js').then((m) => (window.gis = m.default))
 util.dump()
