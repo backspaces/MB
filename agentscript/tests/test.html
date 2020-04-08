@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+    </head>
+
+    <body>
+        <script type="module">
+            import util from '../src/util.js'
+            import {
+                TestModel as Model,
+                TestModule as module,
+            } from './TestModel.js'
+            util.toWindow({ util, Model, module })
+
+            async function run() {
+                const model = new Model()
+
+                util.randomSeed()
+                await model.startup()
+                model.setup()
+                await util.timeoutLoop(() => {
+                    model.step()
+                    model.tick() // Not needed if you don't need the tick count.
+                }, 500)
+
+                util.printToPage(util.sampleModel(model))
+
+                // =====================
+
+                util.randomSeed()
+                await module.startup()
+                module.setup()
+                await util.timeoutLoop(() => {
+                    module.step()
+                    module.model.tick()
+                }, 500)
+
+                util.printToPage(util.sampleModel(module.model))
+            }
+            run()
+        </script>
+    </body>
+</html>

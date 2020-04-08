@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chart</title>
+    </head>
+    <body>
+        <canvas id="chart"></canvas>
+        <!-- <div id="chart"></div> -->
+
+        <script type="module">
+            import Plot from '../src/Plot.js'
+            import util from '../src/util.js'
+            util.toWindow({ Plot, util })
+
+            // const template = {
+            //     susceptible: { color: 'blue' },
+            //     infected: { color: 'red' },
+            //     resistant: { color: 'black' },
+            // }
+            const pens = {
+                susceptible: 'blue',
+                infected: 'red',
+                resistant: 'black',
+            }
+            const plot = new Plot('chart', pens)
+
+            const increment = 25
+            const ranIncr = () => util.randomInt2(-increment, increment)
+            const addPoints = () => {
+                if (plot.ticks.length === 0) {
+                    util.forLoop(pens, (val, key) => (pens[key] = ranIncr()))
+                } else {
+                    util.forLoop(pens, (val, key) => (pens[key] += ranIncr()))
+                }
+                plot.addPoints(pens)
+            }
+            util.toWindow({ addPoints })
+            util.timeoutLoop(addPoints, 100)
+
+            // util.timeoutLoop(() => {
+            //     if (plot.ticks.length === 0) {
+            //         util.forLoop(pens, (val, key) => (pens[key] = ranIncr()))
+            //     } else {
+            //         util.forLoop(pens, (val, key) => (pens[key] += ranIncr()))
+            //     }
+            //     plot.addPoints(pens)
+            // }, 100)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Hello</title>
+        <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    </head>
+    <body>
+        <script type="module">
+            // A simpler version of index.html for running the ./HelloModel.js
+            // Run any model by changing the import's path (i.e. ./AntsModel.js)
+            import util from '../src/util.js'
+            import Model from './HelloModel.js'
+
+            // Run the model. async used for startup().
+            // Not needed by Hello but in generally is used for one-time init.
+            async function run() {
+                // Init and run the model 500 steps
+                const model = new Model()
+
+                // Push several model properties to window from inside this module.
+                // You don't need to do this but is nice for debugging.
+                const { patches, turtles, links } = model
+                util.toWindow({ model, util, patches, turtles, links })
+
+                // Now init and run the model 500 steps async (don't block browser)
+                await model.startup()
+                model.setup()
+                await util.timeoutLoop(() => {
+                    model.step()
+                    model.tick() // Not needed if you don't need the tick count.
+                }, 500)
+                // That's it!
+
+                // For our use, we print out a sample of the model's variables.
+                // It will be different each run of the model
+                const sample = util.sampleModel(model)
+                util.printToPage(sample)
+            }
+            run()
+        </script>
+        <!--
+            A div for general use. We don't use it here. Printing could use:
+            util.printToPage(sample, 'modelDiv')
+        -->
+        <div id="modelDiv"></div>
+    </body>
+</html>
