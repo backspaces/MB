@@ -5,6 +5,9 @@ npm-debug.log
 yarn-error.log
 **/.DS_Store
 
+# agentscript
+agentscript/
+
 # Files > 100MB, github limit
 santafe7.osm
 santafe7.json

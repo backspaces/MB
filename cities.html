@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>MB</title>
+        <meta
+            name="viewport"
+            content="initial-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js"></script>
+        <link
+            href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                margin: 10;
+                padding: 10;
+            }
+            #map {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                /* height: 800px; */
+                width: 95%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script type="module">
+            import util from './agentscript/src/util.js'
+            import gis from './agentscript/src/gis.js'
+            util.toWindow({ util, gis })
+
+            const params = util.RESTapi({
+                min: 0,
+                max: Infinity,
+            })
+            const { min: minPopulation, max: maxPopulation } = params
+            console.log(minPopulation, maxPopulation, params)
+
+            // const minPopulation = 1e5
+            const circleRadius = Math.max(1, Math.log10(minPopulation))
+
+            mapboxgl.accessToken =
+                'pk.eyJ1IjoiYmFja3NwYWNlcyIsImEiOiJjanVrbzI4dncwOXl3M3ptcGJtN3oxMmhoIn0.x9iSCrtm0iADEqixVgPwqQ'
+            const map = new mapboxgl.Map({
+                container: 'map', // container id
+                style: 'mapbox://styles/mapbox/streets-v11',
+                // style: 'mapbox://styles/mapbox/satellite-v9',
+                // style: 'mapbox://styles/mapbox/dark-v10',
+                // style: 'mapbox://styles/mapbox/light-v10',
+                center: [-105.941109, 35.68222],
+                zoom: 4,
+                renderWorldCopies: false,
+            })
+
+            // function mapPromise(map) {
+            //     return new Promise((resolve, reject) => {
+            //         map.on('load', () => resolve())
+            //     })
+            // }
+
+            map.on('load', function () {
+                async function run() {
+                    let cities = await util.xhrPromise(
+                        './data/cities.geojson',
+                        'json'
+                    )
+                    util.toWindow({ map, cities })
+                    gis.featureFilter(
+                        cities,
+                        (feature) =>
+                            feature.properties.population > minPopulation
+                    )
+
+                    // await mapPromise(map)
+                    // console.log('map loaded')
+
+                    map.addLayer({
+                        id: 'cities',
+                        type: 'circle',
+                        source: {
+                            type: 'geojson',
+                            data: cities,
+                        },
+                        layout: {},
+                        paint: {
+                            'circle-color': 'red',
+                            'circle-radius': circleRadius,
+                        },
+                    })
+                }
+                run()
+            })
+
+            // map.on('load', function () {
+            //     map.addLayer({
+            //         id: 'cities',
+            //         type: 'circle',
+            //         source: {
+            //             type: 'geojson',
+            //             data: './data/cities.geojson',
+            //         },
+            //         layout: {},
+            //         paint: { 'circle-color': 'red', 'circle-radius': 2 },
+            //     })
+            // })
+        </script>
+    </body>
+</html>
