@@ -39,9 +39,8 @@
             const params = util.RESTapi({
                 min: 0,
                 max: Infinity,
-                foo: false,
             })
-            const { min: minPopulation, max: maxPopulation, foo } = params
+            const { min: minPopulation, max: maxPopulation } = params
             console.log(minPopulation, maxPopulation, params)
 
             const circleRadius = Math.max(1, Math.log10(minPopulation))

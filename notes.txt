@@ -8,3 +8,48 @@
 + cities
   - center on US 40.236557, -100.334228
 + csv2geojson: convert to mapbox CLI
+
+
+git add .
+files=`git status | grep '^\t' | egrep -v '(models/scripts|dist/|deleted|yarn)' | sed 's/^.*:  //;s/^.*-> //'`; echo $files | tr ' ' '\n'
+gitdiff $files | mate
+gitcommit
+
+gitdiff $files | code --new-window -
+
+bin/tippecanoe -zg -f -l cities -n "Cities Populations" -o data/uscities.mbtiles data/uscities.geojson
+
+Heatmap tutorial
+https://docs.mapbox.com/help/tutorials/studio-heatmap-tutorial/
+[
+  "interpolate",
+  ["linear"],
+  ["heatmap-density"],
+  0,
+  "rgba(0, 0, 255, 0)",
+  0.1,
+  "royalblue",
+  0.3,
+  "cyan",
+  0.5,
+  "lime",
+  0.7,
+  "yellow",
+  1,
+  "red"
+]
+
+
+Commits:
+
+Cleanup
+- add agentscript/ download
+- mktiles: use agentscript/bin
+- csv -> geojson: convert to mapbox CLI
+- cities.html
+  - center
+  - use new MB geojson
+  - removed map.on(load) promise, flaky
+- package.json
+  - start using scripts for tasks (csv2geojson)
+
