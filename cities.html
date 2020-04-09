@@ -77,7 +77,11 @@
                     layout: {},
                     paint: {
                         'circle-color': 'red',
-                        'circle-radius': ['log10', ['get', 'population']],
+                        'circle-radius': [
+                            '*',
+                            0.5,
+                            ['log10', ['get', 'population']],
+                        ],
                     },
                 })
             })
