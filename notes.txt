@@ -21,6 +21,9 @@ bin/tippecanoe -zg -f -l cities -n "Cities Populations" -o data/uscities.mbtiles
 
 Heatmap tutorial
 https://docs.mapbox.com/help/tutorials/studio-heatmap-tutorial/
+https://docs.mapbox.com/mapbox-gl-js/style-spec/expressions/
+https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#filter
+https://docs.mapbox.com/help/glossary/filter/
 [
   "interpolate",
   ["linear"],
