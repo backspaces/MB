@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>HeatMap</title>
+        <title>Heatmap</title>
         <meta
             name="viewport"
             content="initial-scale=1,maximum-scale=1,user-scalable=no"
@@ -36,12 +36,12 @@
             import gis from 'https://backspaces.github.io/agentscript/src/gis.js'
             util.toWindow({ util, gis })
 
-            // const params = util.RESTapi({
-            //     min: 0,
-            //     max: Infinity,
-            // })
-            // const { min: minPopulation, max: maxPopulation } = params
-            // console.log(minPopulation, maxPopulation, params)
+            const params = util.RESTapi({
+                min: 0,
+                max: Infinity,
+            })
+            const { min: minPopulation, max: maxPopulation } = params
+            console.log(minPopulation, maxPopulation, params)
 
             // const circleRadius = Math.max(1, Math.log10(minPopulation))
 
@@ -58,60 +58,43 @@
                 renderWorldCopies: false,
             })
 
-            // https://docs.mapbox.com/help/tutorials/studio-heatmap-tutorial/
             map.on('load', function () {
-                map.addSource('cities', {
-                    type: 'geojson',
-                    data: './data/uscities.geojson',
+                map.addSource('citiesData', {
+                    type: 'vector',
+                    url: 'mapbox://backspaces.4bfnuolo',
                 })
+
                 map.addLayer({
-                    id: 'cities-heat',
+                    id: 'cities',
                     type: 'heatmap',
-                    source: 'cities',
+                    source: 'citiesData',
+                    'source-layer': 'cities',
+                    filter: [
+                        'all',
+                        ['>=', ['get', 'population'], minPopulation],
+                        ['<=', ['get', 'population'], maxPopulation],
+                    ],
                     layout: {},
                     paint: {
-                        'heatmap-weight': {
-                            property: 'population',
-                            type: 'exponential',
-                            stops: [
-                                [1, 0],
-                                [62, 1],
-                            ],
-                        },
-                        'heatmap-intensity': {
-                            stops: [
-                                [11, 1],
-                                [15, 3],
-                            ],
-                        },
-                        'heatmap-color': [
+                        // 'circle-color': 'red',
+                        // 'circle-radius': [
+                        //     'interpolate',
+                        //     ['linear'],
+                        //     ['get', 'population'],
+                        //     0,
+                        //     1,
+                        //     40000,
+                        //     10,
+                        // ],
+                        'heatmap-radius': [
                             'interpolate',
                             ['linear'],
-                            ['heatmap-density'],
+                            ['get', 'population'],
                             0,
-                            'rgba(236,222,239,0)',
-                            0.2,
-                            'rgb(208,209,230)',
-                            0.4,
-                            'rgb(166,189,219)',
-                            0.6,
-                            'rgb(103,169,207)',
-                            0.8,
-                            'rgb(28,144,153)',
+                            1,
+                            15000,
+                            30,
                         ],
-                        'heatmap-radius': {
-                            stops: [
-                                [11, 15],
-                                [15, 20],
-                            ],
-                        },
-                        'heatmap-opacity': {
-                            default: 1,
-                            stops: [
-                                [14, 1],
-                                [15, 0],
-                            ],
-                        },
                     },
                 })
             })

@@ -37,7 +37,7 @@
             util.toWindow({ util, gis })
 
             const params = util.RESTapi({
-                min: 0,
+                min: 1000, // data has some really small towns!
                 max: Infinity,
             })
             const { min: minPopulation, max: maxPopulation } = params
@@ -77,10 +77,20 @@
                     layout: {},
                     paint: {
                         'circle-color': 'red',
+                        // 'circle-radius': [
+                        //     '*',
+                        //     0.5,
+                        //     ['log10', ['get', 'population']],
+                        // ],
+                        // Cody's nifty interpolation:
                         'circle-radius': [
-                            '*',
-                            0.5,
-                            ['log10', ['get', 'population']],
+                            'interpolate',
+                            ['linear'],
+                            ['get', 'population'],
+                            0,
+                            2,
+                            1e6,
+                            8,
                         ],
                     },
                 })

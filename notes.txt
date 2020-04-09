@@ -20,6 +20,7 @@ gitdiff $files | code --new-window -
 bin/tippecanoe -zg -f -l cities -n "Cities Populations" -o data/uscities.mbtiles data/uscities.geojson
 
 Heatmap tutorial
+https://docs.mapbox.com/help/tutorials/mapbox-gl-js-expressions/
 https://docs.mapbox.com/help/tutorials/studio-heatmap-tutorial/
 https://docs.mapbox.com/mapbox-gl-js/style-spec/expressions/
 https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#filter
