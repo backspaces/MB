@@ -65,7 +65,7 @@
                 })
 
                 map.addLayer({
-                    id: 'cities',
+                    id: `canned-heat`,
                     type: 'heatmap',
                     source: 'citiesData',
                     'source-layer': 'cities',
@@ -74,18 +74,23 @@
                         ['>=', ['get', 'population'], minPopulation],
                         ['<=', ['get', 'population'], maxPopulation],
                     ],
-                    layout: {},
+                    maxzoom: 16,
                     paint: {
-                        // 'circle-color': 'red',
-                        // 'circle-radius': [
-                        //     'interpolate',
-                        //     ['linear'],
-                        //     ['get', 'population'],
-                        //     0,
-                        //     1,
-                        //     40000,
-                        //     10,
-                        // ],
+                        // Increase the heatmap weight based on frequency and property magnitude
+                        'heatmap-weight': 0.5,
+                        'heatmap-intensity': 0.5,
+                        'heatmap-color': [
+                            'interpolate-lab',
+                            ['linear'],
+                            ['heatmap-density'],
+                            0,
+                            'rgba(0,0,0,0)',
+                            0.01,
+                            'rgba(0,64,0,0.4)',
+                            1,
+                            'rgba(255,0,0,0.8)',
+                        ],
+                        // Adjust the heatmap radius by zoom level
                         'heatmap-radius': [
                             'interpolate',
                             ['linear'],
@@ -94,6 +99,16 @@
                             1,
                             15000,
                             30,
+                        ],
+                        // Transition from heatmap to circle layer by zoom level
+                        'heatmap-opacity': [
+                            'interpolate',
+                            ['linear'],
+                            ['zoom'],
+                            7,
+                            1,
+                            9,
+                            0,
                         ],
                     },
                 })

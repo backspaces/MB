@@ -37,7 +37,7 @@
             util.toWindow({ util, gis })
 
             const params = util.RESTapi({
-                min: 1000, // data has some really small towns!
+                min: 0, // data has some really small towns!
                 max: Infinity,
             })
             const { min: minPopulation, max: maxPopulation } = params
