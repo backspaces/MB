@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+const process = require('process')
+const shell = require('shelljs')
+const { util, gis } = require('../agentscript/dist/agentscript.umd.js')
+
+// // const gis = require('./gis.umd.js')
+// const esmImport = require('esm')(module)
+// const gis = esmImport('../src/gis.js').default
+
+let data = ''
+process.stdin.on('readable', () => {
+    while ((chunk = process.stdin.read()) !== null) {
+        data += chunk
+    }
+})
+
+process.stdin.on('end', () => {
+    process.stdout.write(processData(data))
+})
+
+function processData(data) {
+    const re = /^(.*) (..) (..)$/gm
+    const objstr = data.replace(re, '$2: {fips:"$3", name:"$1"},')
+    const obj = new Function('return ' + `{${objstr}}`)()
+    return JSON.stringify(obj, null, 2)
+}

@@ -1,15 +1,45 @@
-- bin/
-  - node: convert to agentscript umd?
-    Has to be local unless using require-from-url
-  + fix:
-    const esmImport = require('esm')(module)
-    const gis = esmImport('../../agentscript/src/gis.js').default
-    + converted to using agentscript/bin/
-+ cities
-  - center on US 40.236557, -100.334228
-+ csv2geojson: convert to mapbox CLI
+
+----+----1----+----2----+----3----+----4----+----5----+----6----+----7
+......................................................................
+......................................................................
+......................................................................
+                style: 'mapbox://styles/mapbox/streets-v11',
+                // style: 'mapbox://styles/mapbox/satellite-v9',
+                // style: 'mapbox://styles/mapbox/dark-v10',
+                // style: 'mapbox://styles/mapbox/light-v10',
+......................................................................
+https://github.com/johan/world.geo.json
+https://catalog.data.gov/dataset
+https://simplemaps.com/data
+https://simplemaps.com/data/us-cities
+https://eric.clst.org/tech/usgeojson/
+  https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+https://github.com/mapbox/mapboxgl-jupyter
+  https://github.com/mapbox/mapboxgl-jupyter/blob/master/examples/data/us-states.geojson
+https://github.com/plotly/datasets
+
+http://census.ire.org/data/bulkdata.html
 
 
+https://exploratory.io/note/kei/6949005180287436
+
+https://hifld-geoplatform.opendata.arcgis.com/
+
+
+https://github.com/PublicaMundi/MappingAPI/tree/master/data/geojson
+https://github.com/rstudio/leaflet/tree/gh-pages/json
+
+
+https://www.naturalearthdata.com/downloads/
+https://www.naturalearthdata.com/
+
+https://www.convertcsv.com/csv-to-geojson.htm
+
+http://geojson.io/#map=13/35.6831/-105.9582
+
+......................................................................
+
+......................................................................
 git add .
 files=`git status | grep '^\t' | egrep -v '(models/scripts|dist/|deleted|yarn)' | sed 's/^.*:  //;s/^.*-> //'`; echo $files | tr ' ' '\n'
 gitdiff $files | mate
@@ -19,6 +49,7 @@ gitdiff $files | code --new-window -
 
 bin/tippecanoe -zg -f -l cities -n "Cities Populations" -o data/uscities.mbtiles data/uscities.geojson
 
+......................................................................
 Heatmap tutorial
 https://docs.mapbox.com/help/tutorials/mapbox-gl-js-expressions/
 https://docs.mapbox.com/help/tutorials/studio-heatmap-tutorial/
@@ -43,17 +74,8 @@ https://docs.mapbox.com/help/glossary/filter/
   "red"
 ]
 
-
-Commits:
-
-Cleanup
-- add agentscript/ download
-- mktiles: use agentscript/bin
-- csv -> geojson: convert to mapbox CLI
-- cities.html
-  - center
-  - use new MB geojson
-  - removed map.on(load) promise, flaky
-- package.json
-  - start using scripts for tasks (csv2geojson)
-
+......................................................................
+https://www.nrcs.usda.gov/wps/portal/nrcs/detail/?cid=nrcs143_013696
+clip | tr '\t' ' ' > data/FIPS.txt
+Note: 55 entries but last FIPS number is 78. OK tho, several gaps.
+......................................................................

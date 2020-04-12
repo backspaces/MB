@@ -12,10 +12,13 @@
     },
     "scripts": {
         "tiles": "bin/mktiles 7/26/50",
-        "cities": "node_modules/csv2geojson/csv2geojson --numeric-fields population,density,ranking,county_fips,id data/uscities.csv | bin/minifyjson > data/uscities.geojson"
+        "citiesjson": "node_modules/csv2geojson/csv2geojson --numeric-fields population,density,ranking,county_fips,id data/uscities.csv | agentscript/bin/minifyjson > data/uscities.geojson",
+        "citiestiles": "bin/tippecanoe -zg -f -l cities -n 'Cities Populations' -o data/uscities.mbtiles data/uscities.geojson",
+        "cities": "npm run citiesjson & npm run citiesjson"
     },
     "dependencies": {
         "csv2geojson": "^5.1.1",
+        "esm": "^3.2.25",
         "osmtogeojson": "^3.0.0-beta.4",
         "shx": "^0.3.2"
     }
