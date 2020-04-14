@@ -17,6 +17,7 @@
         "cities": "npm run citiesjson & npm run citiesjson"
     },
     "dependencies": {
+        "@turf/turf": "^5.1.6",
         "csv2geojson": "^5.1.1",
         "esm": "^3.2.25",
         "osmtogeojson": "^3.0.0-beta.4",

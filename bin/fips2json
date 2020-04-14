@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 const process = require('process')
-const shell = require('shelljs')
-const { util, gis } = require('../agentscript/dist/agentscript.umd.js')
+// const shell = require('shelljs')
+// const { util, gis } = require('../agentscript/dist/agentscript.umd.js')
 
 // // const gis = require('./gis.umd.js')
 // const esmImport = require('esm')(module)

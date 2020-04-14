@@ -7,7 +7,9 @@
 //     .then((response) => response.json())
 //     .then(json => cities = json)
 
-let cities = await util.xhrPromise('./data/cities.geojson', 'json')
+let cities = await util.xhrPromise('./data/uscities.geojson', 'json')
+let counties = await util.xhrPromise('./data/counties.json', 'json')
+let states = await util.xhrPromise('./data/usstates.geojson', 'json')
 
 // function mapPromise(map) {
 //     return new Promise((resolve, reject) => {

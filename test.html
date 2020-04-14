@@ -12,6 +12,9 @@
             href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css"
             rel="stylesheet"
         />
+
+        <script src="https://unpkg.com/@turf/turf/turf.min.js"></script>
+
         <style>
             body {
                 margin: 10;
@@ -85,11 +88,20 @@
                         paint: {
                             'line-color': 'rgba(0,0,0,0.25)',
                             'line-width': 1.5,
-                            // 'line-opacity': 0.25,
                         },
                     },
                     'settlement-label'
                 )
+                map.addLayer({
+                    id: 'centroids',
+                    type: 'circle',
+                    source: {
+                        type: 'geojson',
+                        data: './data/centroids.json',
+                    },
+                    layout: {},
+                    paint: { 'circle-color': 'red', 'circle-radius': 2.5 },
+                })
 
                 // https://docs.mapbox.com/mapbox-gl-js/example/hover-styles/
                 map.on('mousemove', 'counties', function (e) {
@@ -97,14 +109,6 @@
 
                     if (e.features.length > 0) {
                         const feature = e.features[0]
-                        console.log(
-                            'feature:',
-                            feature,
-                            'properties:',
-                            feature.properties,
-                            'id',
-                            hoveredStateId
-                        )
                         if (hoveredStateId) {
                             map.setFeatureState(
                                 { source: 'counties', id: hoveredStateId },
@@ -115,14 +119,6 @@
                         map.setFeatureState(
                             { source: 'counties', id: hoveredStateId },
                             { hover: true }
-                        )
-
-                        console.log(
-                            'featureState:',
-                            map.getFeatureState({
-                                source: 'counties',
-                                id: hoveredStateId,
-                            })
                         )
                     }
                 })

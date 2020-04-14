@@ -43,12 +43,36 @@ https://www.convertcsv.com/csv-to-geojson.htm
 
 http://geojson.io/#map=13/35.6831/-105.9582
 
+
+https://drive.google.com/drive/folders/1PbuHq59DMuI5XkKvmIcYuElGVVbknX0z
+https://svi.cdc.gov/data-and-tools-download.html
+
+......................................................................
+Data
+uscities.cvs: https://simplemaps.com/data/us-cities
+    csv2geojson: geojson; tippecanoe: mbtiles
+        5.1M Apr  8 11:01 data/uscities.csv*
+         12M Apr 10 12:50 data/uscities.geojson
+        2.2M Apr 10 12:50 data/uscities.mbtiles
+    bin/tippecanoe -zg -f -l cities -n "Cities Populations" -o data/uscities.mbtiles data/uscities.geojson
+fips: fips.txt cut/paste;
+    bin/fips2json: fips.json
+usstates.geojson counties.json:
+  https://eric.clst.org/tech/usgeojson/
+  states:
+  agentscript/bin/minifyjson
+
+https://eric.clst.org/tech/usgeojson/
+Downloads
+-rw-r--r--@   1 owen  staff   2.6M Apr 10 17:51 gz_2010_us_500_11_20m.json
+-rw-r--r--@   1 owen  staff   3.3M Apr 10 17:23 gz_2010_us_050_00_20m.json
+-rw-r--r--@   1 owen  staff    22M Apr 10 13:43 gz_2010_us_050_00_500k.json
+
 ......................................................................
 
 
 gitdiff $files | code --new-window -
 
-bin/tippecanoe -zg -f -l cities -n "Cities Populations" -o data/uscities.mbtiles data/uscities.geojson
 
 ......................................................................
 Heatmap tutorial
