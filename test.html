@@ -43,37 +43,126 @@
                 zoom: 3,
                 renderWorldCopies: false,
             })
+            let hoveredStateId = null
+
             util.toWindow({ util, map })
 
             map.on('load', function () {
-                map.addLayer({
-                    id: 'counties',
-                    type: 'line',
-                    source: {
-                        type: 'geojson',
-                        data: './data/counties.json',
+                // map.addSource('counties', {
+                //     type: 'geojson',
+                //     data: './data/counties.json',
+                // })
+                map.addLayer(
+                    {
+                        id: 'counties',
+                        type: 'fill',
+                        // type: 'line',
+                        // source: 'counties',
+                        source: {
+                            type: 'geojson',
+                            data: './data/counties.json',
+                        },
+                        // filter: ['==', 'STATE', '35'],
+                        layout: {},
+                        paint: {
+                            'fill-color': [
+                                'case',
+                                ['boolean', ['feature-state', 'hover'], false],
+                                'rgba(0,125,0,0.3)',
+                                'rgba(0,0,0,0)',
+                            ],
+                            'fill-outline-color': 'red',
+                        },
                     },
-                    // filter: ['==', 'STATE', '35'],
-                    layout: {},
-                    paint: {
-                        // 'fill-color': 'rgba(0,0,0,0)',
-                        'line-color': 'red',
+                    'settlement-label'
+                )
+                map.addLayer(
+                    {
+                        id: 'states',
+                        type: 'line',
+                        source: {
+                            type: 'geojson',
+                            data: './data/usstates.geojson',
+                        },
+                        // filter: ['==', 'STATE', '35'],
+                        layout: {},
+                        paint: {
+                            'line-color': 'rgba(0,0,0,0.25)',
+                            'line-width': 1.5,
+                            // 'line-opacity': 0.25,
+                        },
                     },
+                    'settlement-label'
+                )
+
+                // https://docs.mapbox.com/mapbox-gl-js/example/hover-styles/
+                map.on('mousemove', 'counties', function (e) {
+                    map.getCanvas().style.cursor = 'default' //'crosshair'
+
+                    if (e.features.length > 0) {
+                        const feature = e.features[0]
+                        console.log(
+                            'feature:',
+                            feature,
+                            'properties:',
+                            feature.properties,
+                            'id',
+                            hoveredStateId
+                        )
+                        if (hoveredStateId) {
+                            map.setFeatureState(
+                                { source: 'counties', id: hoveredStateId },
+                                { hover: false }
+                            )
+                        }
+                        hoveredStateId = feature.id
+                        map.setFeatureState(
+                            { source: 'counties', id: hoveredStateId },
+                            { hover: true }
+                        )
+
+                        console.log(
+                            'featureState:',
+                            map.getFeatureState({
+                                source: 'counties',
+                                id: hoveredStateId,
+                            })
+                        )
+                    }
+
+                    // const features = map.queryRenderedFeatures(e.point, {
+                    //     layers: ['counties'],
+                    // })
+                    // const feature = features.length === 0 ? null : features[0]
+                    // // if (feature) console.log('feature:', feature.properties)
+                    // if (feature) console.log('feature:', feature.properties)
                 })
-                map.addLayer({
-                    id: 'states',
-                    type: 'line',
-                    source: {
-                        type: 'geojson',
-                        data: './data/usstates.geojson',
-                    },
-                    // filter: ['==', 'STATE', '35'],
-                    layout: {},
-                    paint: {
-                        'line-color': 'black',
-                        'line-width': 2,
-                    },
+                map.on('mouseleave', 'counties', function () {
+                    map.getCanvas().style.cursor = ''
+                    // popup.remove()
+                    // map.setFilter('counties-highlighted', ['in', 'COUNTY', ''])
+                    // overlay.style.display = 'none'
                 })
+
+                // console.log(map.querySourceFeatures('countiesSource'))
+                // // https://docs.mapbox.com/mapbox-gl-js/example/queryrenderedfeatures/
+                // // https://docs.mapbox.com/mapbox-gl-js/example/query-similar-features/
+                // let featueres, nextFeature
+                // map.on('mouseclick', function (e) {
+                //     const features = map.queryRenderedFeatures(e.point, {
+                //         layers: ['counties'],
+                //     })
+
+                //     console.log('feature:', features)
+
+                // var displayFeatures = features.map(function (feat) {
+                //     var displayFeat = {}
+                //     displayProperties.forEach(function (prop) {
+                //         displayFeat[prop] = feat[prop]
+                //     })
+                //     return displayFeat
+                // })
+                // })
             })
         </script>
     </body>

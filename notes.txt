@@ -1,7 +1,11 @@
 
 ----+----1----+----2----+----3----+----4----+----5----+----6----+----7
+Commits:
 ......................................................................
 ......................................................................
+todo
+- states: finer detail
+
 ......................................................................
                 style: 'mapbox://styles/mapbox/streets-v11',
                 // style: 'mapbox://styles/mapbox/satellite-v9',
@@ -17,6 +21,7 @@ https://eric.clst.org/tech/usgeojson/
 https://github.com/mapbox/mapboxgl-jupyter
   https://github.com/mapbox/mapboxgl-jupyter/blob/master/examples/data/us-states.geojson
 https://github.com/plotly/datasets
+https://mygeodata.cloud/
 
 http://census.ire.org/data/bulkdata.html
 
@@ -39,11 +44,6 @@ http://geojson.io/#map=13/35.6831/-105.9582
 
 ......................................................................
 
-......................................................................
-git add .
-files=`git status | grep '^\t' | egrep -v '(models/scripts|dist/|deleted|yarn)' | sed 's/^.*:  //;s/^.*-> //'`; echo $files | tr ' ' '\n'
-gitdiff $files | mate
-gitcommit
 
 gitdiff $files | code --new-window -
 
@@ -78,4 +78,25 @@ https://docs.mapbox.com/help/glossary/filter/
 https://www.nrcs.usda.gov/wps/portal/nrcs/detail/?cid=nrcs143_013696
 clip | tr '\t' ' ' > data/FIPS.txt
 Note: 55 entries but last FIPS number is 78. OK tho, several gaps.
+......................................................................
+Commits:
+......................................................................
+https://backspaces.github.io/MB/counties.html
+    MB.html     cities0.html  heatmap.html
+    cities.html counties.html test.html
+//////////
+git add .
+files=`git status | grep '^\t' | egrep -v '(models/scripts|dist/|deleted|yarn)' | sed 's/^.*:  //;s/^.*-> //'`; echo $files | tr ' ' '\n'
+gitdiff $files | mate
+gitcommit
+//////////
+
+New: counties.html, several data/ files
+- bin/fips2json: convert csv to json
+- counties.html: show counties and state boundarise
+- data:
+  - counties.json
+  - fips.txt
+  - fips.json
+  - usstates.geojson
 ......................................................................
