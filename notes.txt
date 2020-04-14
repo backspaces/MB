@@ -5,6 +5,7 @@ Commits:
 ......................................................................
 todo
 - states: finer detail
+- counties: featureState seems backwards!
 
 ......................................................................
                 style: 'mapbox://styles/mapbox/streets-v11',
@@ -81,6 +82,7 @@ Note: 55 entries but last FIPS number is 78. OK tho, several gaps.
 ......................................................................
 Commits:
 ......................................................................
+https://backspaces.github.io/MB/test.html
 https://backspaces.github.io/MB/counties.html
     MB.html     cities0.html  heatmap.html
     cities.html counties.html test.html
@@ -88,8 +90,15 @@ https://backspaces.github.io/MB/counties.html
 git add .
 files=`git status | grep '^\t' | egrep -v '(models/scripts|dist/|deleted|yarn)' | sed 's/^.*:  //;s/^.*-> //'`; echo $files | tr ' ' '\n'
 gitdiff $files | mate
+
 gitcommit
+
 //////////
+
+New: addFeatureID, test.html hover
+- test.html: Use featureState feature for "hover" map mouse
+- bin/addFeatureID: add an ID to features for map.setFeatureState
+  - data/counties.json: add feature id:n
 
 New: counties.html, several data/ files
 - bin/fips2json: convert csv to json

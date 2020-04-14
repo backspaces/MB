@@ -48,10 +48,6 @@
             util.toWindow({ util, map })
 
             map.on('load', function () {
-                // map.addSource('counties', {
-                //     type: 'geojson',
-                //     data: './data/counties.json',
-                // })
                 map.addLayer(
                     {
                         id: 'counties',
@@ -129,40 +125,10 @@
                             })
                         )
                     }
-
-                    // const features = map.queryRenderedFeatures(e.point, {
-                    //     layers: ['counties'],
-                    // })
-                    // const feature = features.length === 0 ? null : features[0]
-                    // // if (feature) console.log('feature:', feature.properties)
-                    // if (feature) console.log('feature:', feature.properties)
                 })
                 map.on('mouseleave', 'counties', function () {
                     map.getCanvas().style.cursor = ''
-                    // popup.remove()
-                    // map.setFilter('counties-highlighted', ['in', 'COUNTY', ''])
-                    // overlay.style.display = 'none'
                 })
-
-                // console.log(map.querySourceFeatures('countiesSource'))
-                // // https://docs.mapbox.com/mapbox-gl-js/example/queryrenderedfeatures/
-                // // https://docs.mapbox.com/mapbox-gl-js/example/query-similar-features/
-                // let featueres, nextFeature
-                // map.on('mouseclick', function (e) {
-                //     const features = map.queryRenderedFeatures(e.point, {
-                //         layers: ['counties'],
-                //     })
-
-                //     console.log('feature:', features)
-
-                // var displayFeatures = features.map(function (feat) {
-                //     var displayFeat = {}
-                //     displayProperties.forEach(function (prop) {
-                //         displayFeat[prop] = feat[prop]
-                //     })
-                //     return displayFeat
-                // })
-                // })
             })
         </script>
     </body>
