@@ -116,6 +116,16 @@ gitcommit
 
 //////////
 
+counties.html: state filter
+- bin/fips2json:
+  - add both Postal & ID code keys
+  - values now include state fips
+  - use for expanded data/fips.json
+  - add npm runscript to build data/fips.json
+- counties.html
+  - use above to allow ?NM,AZ,CO filter queryString.
+  - add hover from prior test.html
+
 New: centroids.html, first use of turf.js
 - data/centroids.json:
   - bin/featureFilter: node script use turf.js to find all us county centroids.
