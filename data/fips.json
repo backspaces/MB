@@ -1,222 +1,552 @@
 {
+  "10": {
+    "fips": "10",
+    "name": "Delaware",
+    "postal": "DE"
+  },
+  "12": {
+    "fips": "12",
+    "name": "Florida",
+    "postal": "FL"
+  },
+  "13": {
+    "fips": "13",
+    "name": "Georgia",
+    "postal": "GA"
+  },
+  "15": {
+    "fips": "15",
+    "name": "Hawaii",
+    "postal": "HI"
+  },
+  "16": {
+    "fips": "16",
+    "name": "Idaho",
+    "postal": "ID"
+  },
+  "17": {
+    "fips": "17",
+    "name": "Illinois",
+    "postal": "IL"
+  },
+  "18": {
+    "fips": "18",
+    "name": "Indiana",
+    "postal": "IN"
+  },
+  "19": {
+    "fips": "19",
+    "name": "Iowa",
+    "postal": "IA"
+  },
+  "20": {
+    "fips": "20",
+    "name": "Kansas",
+    "postal": "KS"
+  },
+  "21": {
+    "fips": "21",
+    "name": "Kentucky",
+    "postal": "KY"
+  },
+  "22": {
+    "fips": "22",
+    "name": "Louisiana",
+    "postal": "LA"
+  },
+  "23": {
+    "fips": "23",
+    "name": "Maine",
+    "postal": "ME"
+  },
+  "24": {
+    "fips": "24",
+    "name": "Maryland",
+    "postal": "MD"
+  },
+  "25": {
+    "fips": "25",
+    "name": "Massachusetts",
+    "postal": "MA"
+  },
+  "26": {
+    "fips": "26",
+    "name": "Michigan",
+    "postal": "MI"
+  },
+  "27": {
+    "fips": "27",
+    "name": "Minnesota",
+    "postal": "MN"
+  },
+  "28": {
+    "fips": "28",
+    "name": "Mississippi",
+    "postal": "MS"
+  },
+  "29": {
+    "fips": "29",
+    "name": "Missouri",
+    "postal": "MO"
+  },
+  "30": {
+    "fips": "30",
+    "name": "Montana",
+    "postal": "MT"
+  },
+  "31": {
+    "fips": "31",
+    "name": "Nebraska",
+    "postal": "NE"
+  },
+  "32": {
+    "fips": "32",
+    "name": "Nevada",
+    "postal": "NV"
+  },
+  "33": {
+    "fips": "33",
+    "name": "New Hampshire",
+    "postal": "NH"
+  },
+  "34": {
+    "fips": "34",
+    "name": "New Jersey",
+    "postal": "NJ"
+  },
+  "35": {
+    "fips": "35",
+    "name": "New Mexico",
+    "postal": "NM"
+  },
+  "36": {
+    "fips": "36",
+    "name": "New York",
+    "postal": "NY"
+  },
+  "37": {
+    "fips": "37",
+    "name": "North Carolina",
+    "postal": "NC"
+  },
+  "38": {
+    "fips": "38",
+    "name": "North Dakota",
+    "postal": "ND"
+  },
+  "39": {
+    "fips": "39",
+    "name": "Ohio",
+    "postal": "OH"
+  },
+  "40": {
+    "fips": "40",
+    "name": "Oklahoma",
+    "postal": "OK"
+  },
+  "41": {
+    "fips": "41",
+    "name": "Oregon",
+    "postal": "OR"
+  },
+  "42": {
+    "fips": "42",
+    "name": "Pennsylvania",
+    "postal": "PA"
+  },
+  "44": {
+    "fips": "44",
+    "name": "Rhode Island",
+    "postal": "RI"
+  },
+  "45": {
+    "fips": "45",
+    "name": "South Carolina",
+    "postal": "SC"
+  },
+  "46": {
+    "fips": "46",
+    "name": "South Dakota",
+    "postal": "SD"
+  },
+  "47": {
+    "fips": "47",
+    "name": "Tennessee",
+    "postal": "TN"
+  },
+  "48": {
+    "fips": "48",
+    "name": "Texas",
+    "postal": "TX"
+  },
+  "49": {
+    "fips": "49",
+    "name": "Utah",
+    "postal": "UT"
+  },
+  "50": {
+    "fips": "50",
+    "name": "Vermont",
+    "postal": "VT"
+  },
+  "51": {
+    "fips": "51",
+    "name": "Virginia",
+    "postal": "VA"
+  },
+  "53": {
+    "fips": "53",
+    "name": "Washington",
+    "postal": "WA"
+  },
+  "54": {
+    "fips": "54",
+    "name": "West Virginia",
+    "postal": "WV"
+  },
+  "55": {
+    "fips": "55",
+    "name": "Wisconsin",
+    "postal": "WI"
+  },
+  "56": {
+    "fips": "56",
+    "name": "Wyoming",
+    "postal": "WY"
+  },
+  "60": {
+    "fips": "60",
+    "name": "American Samoa",
+    "postal": "AS"
+  },
+  "66": {
+    "fips": "66",
+    "name": "Guam",
+    "postal": "GU"
+  },
+  "69": {
+    "fips": "69",
+    "name": "Northern Mariana Islands",
+    "postal": "MP"
+  },
+  "72": {
+    "fips": "72",
+    "name": "Puerto Rico",
+    "postal": "PR"
+  },
+  "78": {
+    "fips": "78",
+    "name": "Virgin Islands",
+    "postal": "VI"
+  },
   "AL": {
     "fips": "01",
-    "name": "Alabama"
+    "name": "Alabama",
+    "postal": "AL"
+  },
+  "01": {
+    "fips": "01",
+    "name": "Alabama",
+    "postal": "AL"
   },
   "AK": {
     "fips": "02",
-    "name": "Alaska"
+    "name": "Alaska",
+    "postal": "AK"
+  },
+  "02": {
+    "fips": "02",
+    "name": "Alaska",
+    "postal": "AK"
   },
   "AZ": {
     "fips": "04",
-    "name": "Arizona"
+    "name": "Arizona",
+    "postal": "AZ"
+  },
+  "04": {
+    "fips": "04",
+    "name": "Arizona",
+    "postal": "AZ"
   },
   "AR": {
     "fips": "05",
-    "name": "Arkansas"
+    "name": "Arkansas",
+    "postal": "AR"
+  },
+  "05": {
+    "fips": "05",
+    "name": "Arkansas",
+    "postal": "AR"
   },
   "CA": {
     "fips": "06",
-    "name": "California"
+    "name": "California",
+    "postal": "CA"
+  },
+  "06": {
+    "fips": "06",
+    "name": "California",
+    "postal": "CA"
   },
   "CO": {
     "fips": "08",
-    "name": "Colorado"
+    "name": "Colorado",
+    "postal": "CO"
+  },
+  "08": {
+    "fips": "08",
+    "name": "Colorado",
+    "postal": "CO"
   },
   "CT": {
     "fips": "09",
-    "name": "Connecticut"
+    "name": "Connecticut",
+    "postal": "CT"
+  },
+  "09": {
+    "fips": "09",
+    "name": "Connecticut",
+    "postal": "CT"
   },
   "DE": {
     "fips": "10",
-    "name": "Delaware"
+    "name": "Delaware",
+    "postal": "DE"
   },
   "FL": {
     "fips": "12",
-    "name": "Florida"
+    "name": "Florida",
+    "postal": "FL"
   },
   "GA": {
     "fips": "13",
-    "name": "Georgia"
+    "name": "Georgia",
+    "postal": "GA"
   },
   "HI": {
     "fips": "15",
-    "name": "Hawaii"
+    "name": "Hawaii",
+    "postal": "HI"
   },
   "ID": {
     "fips": "16",
-    "name": "Idaho"
+    "name": "Idaho",
+    "postal": "ID"
   },
   "IL": {
     "fips": "17",
-    "name": "Illinois"
+    "name": "Illinois",
+    "postal": "IL"
   },
   "IN": {
     "fips": "18",
-    "name": "Indiana"
+    "name": "Indiana",
+    "postal": "IN"
   },
   "IA": {
     "fips": "19",
-    "name": "Iowa"
+    "name": "Iowa",
+    "postal": "IA"
   },
   "KS": {
     "fips": "20",
-    "name": "Kansas"
+    "name": "Kansas",
+    "postal": "KS"
   },
   "KY": {
     "fips": "21",
-    "name": "Kentucky"
+    "name": "Kentucky",
+    "postal": "KY"
   },
   "LA": {
     "fips": "22",
-    "name": "Louisiana"
+    "name": "Louisiana",
+    "postal": "LA"
   },
   "ME": {
     "fips": "23",
-    "name": "Maine"
+    "name": "Maine",
+    "postal": "ME"
   },
   "MD": {
     "fips": "24",
-    "name": "Maryland"
+    "name": "Maryland",
+    "postal": "MD"
   },
   "MA": {
     "fips": "25",
-    "name": "Massachusetts"
+    "name": "Massachusetts",
+    "postal": "MA"
   },
   "MI": {
     "fips": "26",
-    "name": "Michigan"
+    "name": "Michigan",
+    "postal": "MI"
   },
   "MN": {
     "fips": "27",
-    "name": "Minnesota"
+    "name": "Minnesota",
+    "postal": "MN"
   },
   "MS": {
     "fips": "28",
-    "name": "Mississippi"
+    "name": "Mississippi",
+    "postal": "MS"
   },
   "MO": {
     "fips": "29",
-    "name": "Missouri"
+    "name": "Missouri",
+    "postal": "MO"
   },
   "MT": {
     "fips": "30",
-    "name": "Montana"
+    "name": "Montana",
+    "postal": "MT"
   },
   "NE": {
     "fips": "31",
-    "name": "Nebraska"
+    "name": "Nebraska",
+    "postal": "NE"
   },
   "NV": {
     "fips": "32",
-    "name": "Nevada"
+    "name": "Nevada",
+    "postal": "NV"
   },
   "NH": {
     "fips": "33",
-    "name": "New Hampshire"
+    "name": "New Hampshire",
+    "postal": "NH"
   },
   "NJ": {
     "fips": "34",
-    "name": "New Jersey"
+    "name": "New Jersey",
+    "postal": "NJ"
   },
   "NM": {
     "fips": "35",
-    "name": "New Mexico"
+    "name": "New Mexico",
+    "postal": "NM"
   },
   "NY": {
     "fips": "36",
-    "name": "New York"
+    "name": "New York",
+    "postal": "NY"
   },
   "NC": {
     "fips": "37",
-    "name": "North Carolina"
+    "name": "North Carolina",
+    "postal": "NC"
   },
   "ND": {
     "fips": "38",
-    "name": "North Dakota"
+    "name": "North Dakota",
+    "postal": "ND"
   },
   "OH": {
     "fips": "39",
-    "name": "Ohio"
+    "name": "Ohio",
+    "postal": "OH"
   },
   "OK": {
     "fips": "40",
-    "name": "Oklahoma"
+    "name": "Oklahoma",
+    "postal": "OK"
   },
   "OR": {
     "fips": "41",
-    "name": "Oregon"
+    "name": "Oregon",
+    "postal": "OR"
   },
   "PA": {
     "fips": "42",
-    "name": "Pennsylvania"
+    "name": "Pennsylvania",
+    "postal": "PA"
   },
   "RI": {
     "fips": "44",
-    "name": "Rhode Island"
+    "name": "Rhode Island",
+    "postal": "RI"
   },
   "SC": {
     "fips": "45",
-    "name": "South Carolina"
+    "name": "South Carolina",
+    "postal": "SC"
   },
   "SD": {
     "fips": "46",
-    "name": "South Dakota"
+    "name": "South Dakota",
+    "postal": "SD"
   },
   "TN": {
     "fips": "47",
-    "name": "Tennessee"
+    "name": "Tennessee",
+    "postal": "TN"
   },
   "TX": {
     "fips": "48",
-    "name": "Texas"
+    "name": "Texas",
+    "postal": "TX"
   },
   "UT": {
     "fips": "49",
-    "name": "Utah"
+    "name": "Utah",
+    "postal": "UT"
   },
   "VT": {
     "fips": "50",
-    "name": "Vermont"
+    "name": "Vermont",
+    "postal": "VT"
   },
   "VA": {
     "fips": "51",
-    "name": "Virginia"
+    "name": "Virginia",
+    "postal": "VA"
   },
   "WA": {
     "fips": "53",
-    "name": "Washington"
+    "name": "Washington",
+    "postal": "WA"
   },
   "WV": {
     "fips": "54",
-    "name": "West Virginia"
+    "name": "West Virginia",
+    "postal": "WV"
   },
   "WI": {
     "fips": "55",
-    "name": "Wisconsin"
+    "name": "Wisconsin",
+    "postal": "WI"
   },
   "WY": {
     "fips": "56",
-    "name": "Wyoming"
+    "name": "Wyoming",
+    "postal": "WY"
   },
   "AS": {
     "fips": "60",
-    "name": "American Samoa"
+    "name": "American Samoa",
+    "postal": "AS"
   },
   "GU": {
     "fips": "66",
-    "name": "Guam"
+    "name": "Guam",
+    "postal": "GU"
   },
   "MP": {
     "fips": "69",
-    "name": "Northern Mariana Islands"
+    "name": "Northern Mariana Islands",
+    "postal": "MP"
   },
   "PR": {
     "fips": "72",
-    "name": "Puerto Rico"
+    "name": "Puerto Rico",
+    "postal": "PR"
   },
   "VI": {
     "fips": "78",
-    "name": "Virgin Islands"
+    "name": "Virgin Islands",
+    "postal": "VI"
   }
 }

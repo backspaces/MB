@@ -14,7 +14,8 @@
         "tiles": "bin/mktiles 7/26/50",
         "citiesjson": "node_modules/csv2geojson/csv2geojson --numeric-fields population,density,ranking,county_fips,id data/uscities.csv | agentscript/bin/minifyjson > data/uscities.geojson",
         "citiestiles": "bin/tippecanoe -zg -f -l cities -n 'Cities Populations' -o data/uscities.mbtiles data/uscities.geojson",
-        "cities": "npm run citiesjson & npm run citiesjson"
+        "cities": "npm run citiesjson & npm run citiesjson",
+        "fips": "bin/fips2json < data/fips.txt > data/fips.json"
     },
     "dependencies": {
         "@turf/turf": "^5.1.6",

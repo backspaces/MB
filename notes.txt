@@ -69,11 +69,6 @@ Downloads
 -rw-r--r--@   1 owen  staff    22M Apr 10 13:43 gz_2010_us_050_00_500k.json
 
 ......................................................................
-
-
-gitdiff $files | code --new-window -
-
-
 ......................................................................
 Heatmap tutorial
 https://docs.mapbox.com/help/tutorials/mapbox-gl-js-expressions/
@@ -103,6 +98,8 @@ https://docs.mapbox.com/help/glossary/filter/
 https://www.nrcs.usda.gov/wps/portal/nrcs/detail/?cid=nrcs143_013696
 clip | tr '\t' ' ' > data/FIPS.txt
 Note: 55 entries but last FIPS number is 78. OK tho, several gaps.
+
+
 ......................................................................
 Commits:
 ......................................................................
@@ -118,6 +115,13 @@ gitdiff $files | mate
 gitcommit
 
 //////////
+
+New: centroids.html, first use of turf.js
+- data/centroids.json:
+  - bin/featureFilter: node script use turf.js to find all us county centroids.
+- layer.html: trivial MB layer viewer, for quick tests
+  - currently shows data/centroids.json as circles
+- package.json: yarn add @turf/turf
 
 New: addFeatureID, test.html hover
 - test.html: Use featureState feature for "hover" map mouse

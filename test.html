@@ -46,7 +46,6 @@
                 zoom: 3,
                 renderWorldCopies: false,
             })
-            let hoveredStateId = null
 
             util.toWindow({ util, map })
 
@@ -104,6 +103,7 @@
                 })
 
                 // https://docs.mapbox.com/mapbox-gl-js/example/hover-styles/
+                let hoveredStateId = null
                 map.on('mousemove', 'counties', function (e) {
                     map.getCanvas().style.cursor = 'default' //'crosshair'
 

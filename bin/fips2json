@@ -2,7 +2,7 @@
 
 const process = require('process')
 // const shell = require('shelljs')
-// const { util, gis } = require('../agentscript/dist/agentscript.umd.js')
+// const { util } = require('../agentscript/dist/agentscript.umd.js')
 
 // // const gis = require('./gis.umd.js')
 // const esmImport = require('esm')(module)
@@ -21,7 +21,19 @@ process.stdin.on('end', () => {
 
 function processData(data) {
     const re = /^(.*) (..) (..)$/gm
-    const objstr = data.replace(re, '$2: {fips:"$3", name:"$1"},')
+    const objstr = data.replace(
+        re,
+        `$2: {fips:"$3", name:"$1", postal:"$2"},
+        "$3": {fips:"$3", name:"$1", postal:"$2"},`
+    )
     const obj = new Function('return ' + `{${objstr}}`)()
+    // for (let val of obj) {
+    //     obj[val.postal] = val
+    // }
+    // Object.keys(obj).forEach((k) => {
+    //     const { fips, postal } = obj[k]
+    //     obj[fips] = obj[postal]
+    // })
+
     return JSON.stringify(obj, null, 2)
 }
