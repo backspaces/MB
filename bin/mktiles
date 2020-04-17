@@ -17,15 +17,15 @@ bin=agentscript/bin
 echo $zxy $z $base $tiles
 
 echo 'building osm'
-$bin/zxy2osm $zxy > $base.osm
+$bin/zxy2osm $zxy > data0/$base.osm
 echo 'building json'
-node_modules/osmtogeojson/osmtogeojson < $base.osm > $base.json
+node_modules/osmtogeojson/osmtogeojson < data0/$base.osm > data0/$base.json
 
 echo 'building osm json roads'
-$bin/json2roads < $base.json | $bin/minifyjson > ${base}roads.json
+$bin/json2roads < data0/$base.json | $bin/minifyjson > data/${base}roads.json
 # echo 'getting .png base map'
 # curl https://tile.openstreetmap.org/${zxy}.png > $base.png
 
 echo 'running tippecanoe'
 # tippecanoe/tippecanoe -z14 -f --no-simplification-of-shared-nodes -o ${base}.mbtiles ${base}roads.json
-bin/tippecanoe -zg -f -l roads -n "SantaFe Roads" -o ${base}roads.mbtiles ${base}roads.json
+bin/tippecanoe -zg -f -l roads -n "SantaFe Roads" -o data/${base}roads.mbtiles data/${base}roads.json

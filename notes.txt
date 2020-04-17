@@ -5,13 +5,74 @@ Commits:
 ......................................................................
 todo
 - states: finer detail
+  - usstates.geojson 87K, us_040_00_20m.json 1.4MB, 5m 2.4MB?
 - counties: featureState seems backwards!
+- find source for all data/ files, put in npm run scripts
+
+
+
+https://docs.mapbox.com/mapbox-gl-js/api/#geojsonsource#setdata
+https://docs.mapbox.com/mapbox-gl-js/api/#map#setstyle
+https://docs.mapbox.com/help/troubleshooting/working-with-large-geojson-data/
 
 ......................................................................
-                style: 'mapbox://styles/mapbox/streets-v11',
-                // style: 'mapbox://styles/mapbox/satellite-v9',
-                // style: 'mapbox://styles/mapbox/dark-v10',
-                // style: 'mapbox://styles/mapbox/light-v10',
+Mapbox docs:
+
+https://docs.mapbox.com/mapbox-gl-js/api/
+https://docs.mapbox.com/mapbox-gl-js/api/#popup
+https://docs.mapbox.com/mapbox-gl-js/example/query-similar-features/
+
+
+https://docs.mapbox.com/mapbox-gl-js/style-spec/expressions/
+https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#filter
+
+
+https://docs.mapbox.com/help/tutorials/mapbox-gl-js-expressions/
+https://docs.mapbox.com/help/tutorials/studio-heatmap-tutorial/
+
+https://docs.mapbox.com/help/glossary/filter/
+
+
+https://docs.mapbox.com/help/how-mapbox-works/web-apps/
+https://docs.mapbox.com/help/tutorials/building-a-store-locator
+
+https://docs.mapbox.com/mapbox-gl-js/examples/
+https://docs.mapbox.com/mapbox-gl-js/example/hover-styles/
+https://docs.mapbox.com/mapbox-gl-js/example/canvas-source/
+https://docs.mapbox.com/mapbox-gl-js/example/data-join/
+https://docs.mapbox.com/mapbox-gl-js/example/live-update-feature/
+https://docs.mapbox.com/mapbox-gl-js/example/vector-source/
+https://docs.mapbox.com/mapbox-gl-js/example/mapbox-gl-draw/
+https://docs.mapbox.com/mapbox-gl-js/example/updating-choropleth/
+https://docs.mapbox.com/mapbox-gl-js/example/live-update-feature/
+
+https://docs.mapbox.com/help/tutorials/
+https://docs.mapbox.com/help/troubleshooting/
+https://docs.mapbox.com/help/troubleshooting/large-data-tippecanoe/
+https://docs.mapbox.com/help/troubleshooting/adjust-tileset-zoom-extent/
+https://docs.mapbox.com/help/troubleshooting/working-with-large-geojson-data/
+https://docs.mapbox.com/help/tutorials/optimization-api/
+
+https://blog.mapbox.com/@Mapbox
+https://blog.mapbox.com/visualizing-election-data-a-guide-to-mapbox-gl-expressions-92cc469b8dfd
+https://blog.mapbox.com/going-live-with-electoral-maps-a-guide-to-feature-state-b520e91a22d
+https://blog.mapbox.com/designing-electoral-maps-exploring-mapbox-gl-js-a7b7db75bd13
+http://turfjs.org/
+
+
+
+https://www.mapbox.com/mapbox-studio/
+https://docs.mapbox.com/studio-manual/overview/
+https://blog.cartong.org/wordpress/wp-content/uploads/2020/02/How-to-Using-mapbox-into-PowerBI_CartONG_Final.pdf
+http://build-failed.blogspot.com/2017/02/playing-with-mapbox-vector-tiles-part-1.html
+https://github.com/mapbox/awesome-vector-tiles
+
+
+......................................................................
+styles/mapbox/streets-v11',
+styles/mapbox/satellite-v9',
+styles/mapbox/dark-v10',
+styles/mapbox/light-v10',
 ......................................................................
 https://github.com/johan/world.geo.json
 https://catalog.data.gov/dataset
@@ -36,7 +97,7 @@ https://github.com/PublicaMundi/MappingAPI/tree/master/data/geojson
 https://github.com/rstudio/leaflet/tree/gh-pages/json
 
 
-https://www.naturalearthdata.com/downloads/
+https://www.naturalearthdata.com/downloads/ //shp files, not geojson
 https://www.naturalearthdata.com/
 
 https://www.convertcsv.com/csv-to-geojson.htm
@@ -62,52 +123,43 @@ usstates.geojson counties.json:
   states:
   agentscript/bin/minifyjson
 
-https://eric.clst.org/tech/usgeojson/
-Downloads
--rw-r--r--@   1 owen  staff   2.6M Apr 10 17:51 gz_2010_us_500_11_20m.json
--rw-r--r--@   1 owen  staff   3.3M Apr 10 17:23 gz_2010_us_050_00_20m.json
--rw-r--r--@   1 owen  staff    22M Apr 10 13:43 gz_2010_us_050_00_500k.json
 
-......................................................................
-......................................................................
-Heatmap tutorial
-https://docs.mapbox.com/help/tutorials/mapbox-gl-js-expressions/
-https://docs.mapbox.com/help/tutorials/studio-heatmap-tutorial/
-https://docs.mapbox.com/mapbox-gl-js/style-spec/expressions/
-https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#filter
-https://docs.mapbox.com/help/glossary/filter/
-[
-  "interpolate",
-  ["linear"],
-  ["heatmap-density"],
-  0,
-  "rgba(0, 0, 255, 0)",
-  0.1,
-  "royalblue",
-  0.3,
-  "cyan",
-  0.5,
-  "lime",
-  0.7,
-  "yellow",
-  1,
-  "red"
-]
+Downloads data0/ https://eric.clst.org/tech/usgeojson/
+us_040: states
+-rw-r--r--@ 1 owen  staff   1.4M Apr 16 15:30 gz_2010_us_040_00_20m.json
+-rw-r--r--@ 1 owen  staff   2.4M Apr 16 15:30 gz_2010_us_040_00_5m.json
+us_050: counties
+-rw-r--r--@ 1 owen  staff   3.3M Apr 16 15:30 gz_2010_us_050_00_20m.json
+-rw-r--r--@ 1 owen  staff    22M Apr 16 15:30 gz_2010_us_050_00_500k.json
+us_500: congressional
+-rw-r--r--@ 1 owen  staff   2.6M Apr 16 15:30 gz_2010_us_500_11_20m.json
+Uses: https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
 
-......................................................................
 https://www.nrcs.usda.gov/wps/portal/nrcs/detail/?cid=nrcs143_013696
 clip | tr '\t' ' ' > data/FIPS.txt
 Note: 55 entries but last FIPS number is 78. OK tho, several gaps.
 
+......................................................................
+......................................................................
+......................................................................
+......................................................................
+Issues:
+
+
+- Key problem is that mapbox gl js doesn't use js where you'd like (expressions)
+
+- Filtering on feature ID:
+    string ("05") converted to number causing multiple hits in string using "in" expr. Soln is to use an array I suspect
+// REMIND: fix, id is numeric!
+// filter:
+//     states.length === 0
+//         ? ['to-boolean', true]
+//         : ['in', ['id'], fips],
+// : ['==', ['id'], states],
 
 ......................................................................
 Commits:
 ......................................................................
-https://backspaces.github.io/MB/test.html
-https://backspaces.github.io/MB/counties.html
-    MB.html     cities0.html  heatmap.html
-    cities.html counties.html test.html
-//////////
 git add .
 files=`git status | grep '^\t' | egrep -v '(models/scripts|dist/|deleted|yarn)' | sed 's/^.*:  //;s/^.*-> //'`; echo $files | tr ' ' '\n'
 gitdiff $files | mate
@@ -115,6 +167,11 @@ gitdiff $files | mate
 gitcommit
 
 //////////
+
+
+- data0/: gitignored dir of original data before modified for MB use
+  - mktiles: put large intermediate files in data0/
+
 
 counties.html: state filter
 - bin/fips2json:

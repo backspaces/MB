@@ -24,6 +24,10 @@
                 /* height: 800px; */
                 width: 95%;
             }
+            .mapboxgl-popup {
+                max-width: 400px;
+                font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            }
         </style>
     </head>
     <body>
@@ -80,12 +84,6 @@
                         type: 'geojson',
                         data: './data/usstates.geojson',
                     },
-                    // REMIND: fix, id is numeric!
-                    // filter:
-                    //     states.length === 0
-                    //         ? ['to-boolean', true]
-                    //         : ['in', ['id'], fips],
-                    // : ['==', ['id'], states],
                     layout: {},
                     paint: {
                         'line-color': 'rgba(0,0,0,0.4)',
@@ -94,8 +92,15 @@
                 })
                 // }
 
+                // https://docs.mapbox.com/mapbox-gl-js/example/query-similar-features/
+                // Create a popup, but don't add it to the map yet.
+                const popup = new mapboxgl.Popup({
+                    closeButton: false,
+                })
+
                 // https://docs.mapbox.com/mapbox-gl-js/example/hover-styles/
                 let hoveredStateId = null
+
                 map.on('mousemove', 'counties', function (e) {
                     map.getCanvas().style.cursor = 'default' //'crosshair'
 
@@ -112,10 +117,16 @@
                             { source: 'counties', id: hoveredStateId },
                             { hover: true }
                         )
+
+                        popup
+                            .setLngLat(e.lngLat)
+                            .setText(feature.properties.NAME)
+                            .addTo(map)
                     }
                 })
                 map.on('mouseleave', 'counties', function () {
                     map.getCanvas().style.cursor = ''
+                    popup.remove()
                 })
             }
             map.on('load', function () {

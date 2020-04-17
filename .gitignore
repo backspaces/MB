@@ -12,3 +12,6 @@ yarn-error.log
 # Files > 100MB, github limit
 santafe7.osm
 santafe7.json
+
+# Original data before modifications
+data0/
