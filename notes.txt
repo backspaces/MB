@@ -9,7 +9,7 @@ todo
 - counties: featureState seems backwards!
 - find source for all data/ files, put in npm run scripts
 
-
+Benny: https://dev.simtable.com/ASM/ft-epidemic-map/NewMexicoSIR/
 
 https://docs.mapbox.com/mapbox-gl-js/api/#geojsonsource#setdata
 https://docs.mapbox.com/mapbox-gl-js/api/#map#setstyle
@@ -74,6 +74,8 @@ styles/mapbox/satellite-v9',
 styles/mapbox/dark-v10',
 styles/mapbox/light-v10',
 ......................................................................
+Data:
+
 https://github.com/johan/world.geo.json
 https://catalog.data.gov/dataset
 https://simplemaps.com/data
@@ -106,7 +108,8 @@ http://geojson.io/#map=13/35.6831/-105.9582
 
 
 https://drive.google.com/drive/folders/1PbuHq59DMuI5XkKvmIcYuElGVVbknX0z
-https://svi.cdc.gov/data-and-tools-download.html
+CDC's Social Vulnerability Index (SVI)
+  https://svi.cdc.gov/data-and-tools-download.html
 
 ......................................................................
 Data
@@ -123,6 +126,8 @@ usstates.geojson counties.json:
   states:
   agentscript/bin/minifyjson
 
+Sociall Vulnerability Index
+https://svi.cdc.gov/data-and-tools-download.html
 
 Downloads data0/ https://eric.clst.org/tech/usgeojson/
 us_040: states
@@ -168,10 +173,10 @@ gitcommit
 
 //////////
 
-
+New: counties.html popup while hovering counties
+- counties.html: add popup for county names
 - data0/: gitignored dir of original data before modified for MB use
   - mktiles: put large intermediate files in data0/
-
 
 counties.html: state filter
 - bin/fips2json:
