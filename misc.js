@@ -8,7 +8,7 @@
 //     .then(json => cities = json)
 
 let cities = await util.xhrPromise('./data/uscities.geojson', 'json')
-let counties = await util.xhrPromise('./data/counties.json', 'json')
+let counties = await util.xhrPromise('./data/uscounties.json', 'json')
 let states = await util.xhrPromise('./data/usstates.geojson', 'json')
 
 // function mapPromise(map) {
@@ -21,18 +21,18 @@ let states = await util.xhrPromise('./data/usstates.geojson', 'json')
 // console.log('map loaded')
 
 // ------------------------------
-import('../src/gis.js').then((m) => (window.gis = m.default))
+import('../src/gis.js').then(m => (window.gis = m.default))
 util.dump()
 
 l = ls.oneOf()
 len = gis.lonLat2meters([l.end0.lon, l.end0.lat], [l.end1.lon, l.end1.lat])
 
-radians = (degrees) => (degrees * Math.PI) / 180
+radians = degrees => (degrees * Math.PI) / 180
 let [pt1, pt2] = [
     [l.end0.lon, l.end0.lat],
     [l.end1.lon, l.end1.lat],
 ]
-let [lon1, lat1] = pt1.map((val) => radians(val))
+let [lon1, lat1] = pt1.map(val => radians(val))
 
 // ------------------------------
 async function foo(val) {
@@ -42,7 +42,7 @@ async function foo(val) {
     // ms returned as the result of the foo promise
     return ms
 }
-foo(2000).then((val) => console.log(val))
+foo(2000).then(val => console.log(val))
 
 // ------------------------------
 s = `{

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Async</title>
+        <meta
+            name="viewport"
+            content="initial-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js"></script>
+        <link
+            href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css"
+            rel="stylesheet"
+        />
+
+        <script src="https://unpkg.com/@turf/turf/turf.min.js"></script>
+
+        <style>
+            body {
+                margin: 10;
+                padding: 10;
+            }
+            #map {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                /* height: 800px; */
+                width: 95%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script type="module">
+            mapboxgl.accessToken =
+                'pk.eyJ1IjoiYmFja3NwYWNlcyIsImEiOiJjanVrbzI4dncwOXl3M3ptcGJtN3oxMmhoIn0.x9iSCrtm0iADEqixVgPwqQ'
+
+            const center = [-106.16, 34.185]
+            const json = turf.featureCollection([turf.point(center)])
+
+            const map = new mapboxgl.Map({
+                container: 'map', // container id
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: center,
+                zoom: 5.5,
+            })
+
+            function mapPromise(map) {
+                return new Promise((resolve, reject) => {
+                    map.on('load', () => resolve())
+                })
+            }
+
+            async function run() {
+                await mapPromise(map)
+                map.addLayer({
+                    id: 'center',
+                    type: 'circle',
+                    source: {
+                        type: 'geojson',
+                        data: json,
+                        // data: './data/centroids.json',
+                    },
+                    paint: {
+                        'circle-color': 'red',
+                        'circle-radius': 20,
+                    },
+                })
+            }
+            run()
+
+            // map.on('load', function () {
+            //     console.log('vanilla load')
+            //     map.addLayer({
+            //         id: 'center',
+            //         type: 'circle',
+            //         source: {
+            //             type: 'geojson',
+            //             data: json,
+            //         },
+            //         paint: {
+            //             'circle-color': 'red',
+            //             'circle-radius': 20,
+            //         },
+            //     })
+            // })
+        </script>
+    </body>
+</html>

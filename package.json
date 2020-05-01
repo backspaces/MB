@@ -17,6 +17,7 @@
         "cities": "npm-run-all citiesjson citiesjson",
         "states": "agentscript/bin/minifyjson < data0/gz_2010_us_040_00_20m.json > data/usstates.geojson",
         "fips": "bin/fips2json < data/fips.txt > data/fips.json",
+        "nmcounties": "bin/featureFilter STATE:35 < data/uscounties.json | agentscript/bin/minifyjson > data/nmcounties.json",
         "foo": "mapshaper -h"
     },
     "dependencies": {

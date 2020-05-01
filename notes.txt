@@ -3,6 +3,18 @@
 Commits:
 ......................................................................
 ......................................................................
+......................................................................
+......................................................................
+is geojson fetchable from mb layers?
+Canvas BBox: Four geographical coordinates, represented as arrays of longitude and latitude numbers, which define the corners of the image. The coordinates start at the top left corner of the image and proceed in clockwise order. They do not have to represent a rectangle.
+    coordinates: [
+        [west, north],
+        [east, north],
+        [east, south],
+        [west, south],
+    ],
+
+......................................................................
 todo
 - states: finer detail
   - usstates.geojson 87K, us_040_00_20m.json 1.4MB, 5m 2.4MB?
@@ -69,10 +81,10 @@ https://github.com/mapbox/awesome-vector-tiles
 
 
 ......................................................................
-styles/mapbox/streets-v11',
-styles/mapbox/satellite-v9',
-styles/mapbox/dark-v10',
-styles/mapbox/light-v10',
+  style: 'mapbox://styles/mapbox/streets-v11',
+  // style: 'mapbox://styles/mapbox/satellite-v9',
+  // style: 'mapbox://styles/mapbox/dark-v10',
+  // style: 'mapbox://styles/mapbox/light-v10',
 ......................................................................
 Data:
 
@@ -88,6 +100,8 @@ https://github.com/plotly/datasets
 https://mygeodata.cloud/
 
 http://census.ire.org/data/bulkdata.html
+
+bbox spec: https://tools.ietf.org/html/rfc7946
 
 
 https://exploratory.io/note/kei/6949005180287436
@@ -121,7 +135,7 @@ uscities.cvs: https://simplemaps.com/data/us-cities
     bin/tippecanoe -zg -f -l cities -n "Cities Populations" -o data/uscities.mbtiles data/uscities.geojson
 fips: fips.txt cut/paste;
     bin/fips2json: fips.json
-usstates.geojson counties.json:
+usstates.geojson uscounties.json:
   https://eric.clst.org/tech/usgeojson/
   states:
   agentscript/bin/minifyjson
@@ -198,13 +212,13 @@ New: centroids.html, first use of turf.js
 New: addFeatureID, test.html hover
 - test.html: Use featureState feature for "hover" map mouse
 - bin/addFeatureID: add an ID to features for map.setFeatureState
-  - data/counties.json: add feature id:n
+  - data/uscounties.json: add feature id:n
 
 New: counties.html, several data/ files
 - bin/fips2json: convert csv to json
 - counties.html: show counties and state boundarise
 - data:
-  - counties.json
+  - uscounties.json
   - fips.txt
   - fips.json
   - usstates.geojson

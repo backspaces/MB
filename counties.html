@@ -59,7 +59,7 @@
                     type: 'fill',
                     source: {
                         type: 'geojson',
-                        data: './data/counties.json',
+                        data: './data/uscounties.json',
                     },
                     filter:
                         states.length === 0
@@ -142,7 +142,7 @@
                     const array = states
                         .toUpperCase()
                         .split(',')
-                        .map((postal) => fips[postal].fips)
+                        .map(postal => fips[postal].fips)
                     return array.join(',')
                 } else {
                     return ''
