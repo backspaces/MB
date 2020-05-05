@@ -1,0 +1,167 @@
+{
+  "35001": {
+    "fips": "35001",
+    "county": "Bernalillo",
+    "population": 677692
+  },
+  "35003": {
+    "fips": "35003",
+    "county": "Catron",
+    "population": 3539
+  },
+  "35005": {
+    "fips": "35005",
+    "county": "Chaves",
+    "population": 65459
+  },
+  "35006": {
+    "fips": "35006",
+    "county": "Cibola",
+    "population": 26978
+  },
+  "35007": {
+    "fips": "35007",
+    "county": "Colfax",
+    "population": 12353
+  },
+  "35009": {
+    "fips": "35009",
+    "county": "Curry",
+    "population": 50199
+  },
+  "35011": {
+    "fips": "35011",
+    "county": "De Baca",
+    "population": 2060
+  },
+  "35013": {
+    "fips": "35013",
+    "county": "Dona Ana",
+    "population": 215338
+  },
+  "35015": {
+    "fips": "35015",
+    "county": "Eddy",
+    "population": 57437
+  },
+  "35017": {
+    "fips": "35017",
+    "county": "Grant",
+    "population": 28061
+  },
+  "35019": {
+    "fips": "35019",
+    "county": "Guadalupe",
+    "population": 4382
+  },
+  "35021": {
+    "fips": "35021",
+    "county": "Harding",
+    "population": 459
+  },
+  "35023": {
+    "fips": "35023",
+    "county": "Hidalgo",
+    "population": 4371
+  },
+  "35025": {
+    "fips": "35025",
+    "county": "Lea",
+    "population": 70126
+  },
+  "35027": {
+    "fips": "35027",
+    "county": "Lincoln",
+    "population": 19482
+  },
+  "35028": {
+    "fips": "35028",
+    "county": "Los Alamos",
+    "population": 18356
+  },
+  "35029": {
+    "fips": "35029",
+    "county": "Luna",
+    "population": 24264
+  },
+  "35031": {
+    "fips": "35031",
+    "county": "McKinley",
+    "population": 72849
+  },
+  "35033": {
+    "fips": "35033",
+    "county": "Mora",
+    "population": 4563
+  },
+  "35035": {
+    "fips": "35035",
+    "county": "Otero",
+    "population": 65745
+  },
+  "35037": {
+    "fips": "35037",
+    "county": "Quay",
+    "population": 8373
+  },
+  "35039": {
+    "fips": "35039",
+    "county": "Rio Arriba",
+    "population": 39307
+  },
+  "35041": {
+    "fips": "35041",
+    "county": "Roosevelt",
+    "population": 19117
+  },
+  "35043": {
+    "fips": "35043",
+    "county": "Sandoval",
+    "population": 140769
+  },
+  "35045": {
+    "fips": "35045",
+    "county": "San Juan",
+    "population": 127455
+  },
+  "35047": {
+    "fips": "35047",
+    "county": "San Miguel",
+    "population": 28034
+  },
+  "35049": {
+    "fips": "35049",
+    "county": "Santa Fe",
+    "population": 148917
+  },
+  "35051": {
+    "fips": "35051",
+    "county": "Sierra",
+    "population": 11135
+  },
+  "35053": {
+    "fips": "35053",
+    "county": "Socorro",
+    "population": 17000
+  },
+  "35055": {
+    "fips": "35055",
+    "county": "Taos",
+    "population": 32888
+  },
+  "35057": {
+    "fips": "35057",
+    "county": "Torrance",
+    "population": 15595
+  },
+  "35059": {
+    "fips": "35059",
+    "county": "Union",
+    "population": 4175
+  },
+  "35061": {
+    "fips": "35061",
+    "county": "Valencia",
+    "population": 75956
+  }
+}

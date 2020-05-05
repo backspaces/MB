@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+const shell = require('shelljs')
+
+// shell.cp('data/nmcounties.json', 'data0/')
+const geojsonFile = 'data/nmcounties.json'
+
+// bkup:
+// shell.cp(geojsonFile, '/tmp')
+
+const population = JSON.parse(shell.cat('data/nmpopulation.json'))
+const geojson = JSON.parse(shell.cat(geojsonFile))
+const features = geojson.features
+
+const numPopulation = Object.keys(population).length
+const numFeatures = features.length
+if (numPopulation != numFeatures) {
+    console.log(
+        Object.keys(population),
+        features.map(c => c.id)
+    )
+    throw `size mismatch: ${numPopulation} ${numFeatures}`
+}
+
+features.forEach(feature => {
+    const id = feature.id
+    if (!population[id]) console.log('id', id, 'not in population.')
+    feature.properties.population = population[feature.id].population
+})
+
+shell.echo(JSON.stringify(geojson, null, 2))

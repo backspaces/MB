@@ -16,7 +16,7 @@ process.stdin.on('end', () => {
 function processData(data) {
     const json = JSON.parse(data)
     json.features.forEach((feature, i) => {
-        feature.id = i
+        feature.id = feature.properties.STATE + feature.properties.COUNTY
     })
     return JSON.stringify(json, null, 2)
 }

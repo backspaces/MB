@@ -4,6 +4,9 @@ Commits:
 ......................................................................
 ......................................................................
 ......................................................................
+turf.distance([west,north], [east, south])
+  test rel to gis module
+
 ......................................................................
 is geojson fetchable from mb layers?
 Canvas BBox: Four geographical coordinates, represented as arrays of longitude and latitude numbers, which define the corners of the image. The coordinates start at the top left corner of the image and proceed in clockwise order. They do not have to represent a rectangle.
@@ -16,6 +19,8 @@ Canvas BBox: Four geographical coordinates, represented as arrays of longitude a
 
 ......................................................................
 todo
+- solve async problem w/ node stdin/out
+  - update addPopulation to use stdin/out, po
 - states: finer detail
   - usstates.geojson 87K, us_040_00_20m.json 1.4MB, 5m 2.4MB?
 - counties: featureState seems backwards!
@@ -93,13 +98,35 @@ https://catalog.data.gov/dataset
 https://simplemaps.com/data
 https://simplemaps.com/data/us-cities
 https://eric.clst.org/tech/usgeojson/
+  https://data.census.gov/cedsci/
   https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
 https://github.com/mapbox/mapboxgl-jupyter
   https://github.com/mapbox/mapboxgl-jupyter/blob/master/examples/data/us-states.geojson
 https://github.com/plotly/datasets
 https://mygeodata.cloud/
 
+Oops:
+- 3193 entries in co-est2019-alldata.csv, 51 are states!
+  grep 'COUNTY": "000"' data0/co-est2019-alldata.json| wc -l
+    51
+- 3221 in uscounties.json. Multi-poly states?
+  - id may not be unique now?
+  - nope: this produces 3221
+      grep '"id"' data/uscounties.json | \
+        sed 's/^.*"id"://;s/^"//;s/".*//' | \
+        sort | uniq | wc
+    no states, this produces no output:
+      grep '"id"' data/uscounties.json |
+        sed 's/^.*"id"://;s/^"//;s/".*//' |
+        sort | uniq | grep '..000'
+population check:
+grep population data/nmpopulation.json | sed 's/^.*://;s/$/,/'
+pop = [677692, 3539, 65459, 26978, 12353, 50199, 2060, 215338, 57437, 28061, 4382, 459, 4371, 70126, 19482, 18356, 24264, 72849, 4563, 65745, 8373, 39307, 19117, 140769, 127455, 28034, 148917, 11135, 17000, 32888, 15595, 4175, 75956]
+util.arraySum(pop) => 2092434
+
+
 http://census.ire.org/data/bulkdata.html
+https://wiki.openstreetmap.org/wiki/United_States/American_Indian_reservations
 
 bbox spec: https://tools.ietf.org/html/rfc7946
 
@@ -139,6 +166,11 @@ usstates.geojson uscounties.json:
   https://eric.clst.org/tech/usgeojson/
   states:
   agentscript/bin/minifyjson
+population covid19-healthsystemcapacity/data/published/us_healthcare_capacity-county-CovidCareMap.csv
+https://github.com/mapbox/csv2geojson for csv => geojson
+  https://csvjson.com/ csv to json, not geojson. Useful!
+  co-est2019-alldata.csv -> .json
+nm pop, from https://github.com/RedfishGroup/GISData/blob/master/popul_byco2018_fromDBF.csv
 
 Sociall Vulnerability Index
 https://svi.cdc.gov/data-and-tools-download.html
@@ -186,6 +218,20 @@ gitdiff $files | mate
 gitcommit
 
 //////////
+
+Agent/MB first light: test.html
+test.html:
+  - add hello model
+- bin/addFeatureID: use state + county fips rather than index
+- bin/addPopulation: new, merge population data into nmcounties.json
+- bin/redfish2pop: new, convert steve's csv to json
+
+
+
+New: test.html: NM counties & MB CanvasSource
+- bin/tools: async: mapLoadPromise(map)
+- async.html: test of above
+- bin/featureFilter (nmcounties etc from uscounties etc)
 
 New: counties.html popup while hovering counties
 - counties.html: add popup for county names
