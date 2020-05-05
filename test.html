@@ -79,11 +79,11 @@
                 const view = new TwoView(model.world, {
                     div: util.createCanvas(0, 0, false), // not offscreen}
                 })
-                view.drawPatches(model.patches, p => {
-                    const color = p.feature ? grayMap.randomColor() : grayMap[0]
-                    color.alpha = 120
-                    return color.pixel
-                })
+                // view.drawPatches(model.patches, p => {
+                //     const color = p.feature ? grayMap.randomColor() : grayMap[0]
+                //     color.alpha = 120
+                //     return color.pixel
+                // })
                 util.toWindow({ model, view, grayMap, xfm })
 
                 const map = new mapboxgl.Map({
@@ -140,7 +140,8 @@
                         model.step()
                         model.tick()
 
-                        view.drawPatches()
+                        view.clear()
+                        // view.drawPatches()
                         view.drawLinks(model.links, {
                             color: 'gray',
                             width: 1,

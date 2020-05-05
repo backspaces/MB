@@ -220,13 +220,21 @@ gitcommit
 //////////
 
 Agent/MB first light: test.html
-test.html:
+- test.html:
   - add hello model
+  - add view
+  - add features info to patches
+  - add World.bbox transform
+  - add geo coords to patches
+  - add turtle's current hover feature
+  - animate
+- tools.js: moved utils from test.html into separate file
 - bin/addFeatureID: use state + county fips rather than index
 - bin/addPopulation: new, merge population data into nmcounties.json
 - bin/redfish2pop: new, convert steve's csv to json
-
-
+- data/nmpopulation.json: json file made from redfish2pop
+- data/nmcounties.json: add population from above, use fips id
+- data/uscounties.json: use fips id
 
 New: test.html: NM counties & MB CanvasSource
 - bin/tools: async: mapLoadPromise(map)
