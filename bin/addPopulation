@@ -2,8 +2,8 @@
 
 const shell = require('shelljs')
 
-// shell.cp('data/nmcounties.json', 'data0/')
-const geojsonFile = 'data/nmcounties.json'
+// shell.cp('data/nmcounties.geojson', 'data0/')
+const geojsonFile = 'data/nmcounties.geojson'
 
 // bkup:
 // shell.cp(geojsonFile, '/tmp')

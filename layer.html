@@ -2,14 +2,14 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Simple Layer</title>
+        <title>Layer</title>
         <meta
             name="viewport"
             content="initial-scale=1,maximum-scale=1,user-scalable=no"
         />
-        <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js"></script>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
         <link
-            href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css"
+            href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css"
             rel="stylesheet"
         />
         <style>
@@ -30,9 +30,9 @@
         <div id="map"></div>
         <script type="module">
             import util from 'https://backspaces.github.io/agentscript/src/util.js'
-            const modelParams = util.parseQueryString()
+            // const modelParams = util.parseQueryString()
+            // const name = Object.keys(modelParams)[0] || 'geojson'
 
-            const name = Object.keys(modelParams)[0] || 'geojson'
             mapboxgl.accessToken =
                 'pk.eyJ1IjoiYmFja3NwYWNlcyIsImEiOiJjanVrbzI4dncwOXl3M3ptcGJtN3oxMmhoIn0.x9iSCrtm0iADEqixVgPwqQ'
             const map = new mapboxgl.Map({
@@ -45,15 +45,41 @@
             util.toWindow({ util, map })
 
             map.on('load', function () {
+                // map.addLayer({
+                //     id: 'circle',
+                //     type: 'circle',
+                //     source: {
+                //         type: 'geojson',
+                //         data: './data/centroids.json',
+                //     },
+                //     layout: {},
+                //     paint: { 'circle-color': 'red' },
+                // })
+
                 map.addLayer({
-                    id: 'foo',
-                    type: 'circle',
+                    id: 'raster',
+                    type: 'hillshade', // only layer type for raster-dem
                     source: {
-                        type: 'geojson',
-                        data: './data/centroids.json',
+                        type: 'raster-dem',
+                        url: 'mapbox://mapbox.terrain-rgb',
                     },
-                    layout: {},
-                    paint: { 'circle-color': 'red' },
+                })
+
+                function report(eventType) {
+                    const bounds = map.getBounds().toArray()
+                    const [west, south] = bounds[0]
+                    const [east, north] = bounds[1]
+                    const bbox = [west, south, east, north]
+                    const zoom = map.getZoom()
+                    console.log(eventType, bbox, zoom)
+                }
+                map.on('dragend', function (e) {
+                    report('dragend')
+                    // console.log('dragend', report('dragend'))
+                })
+                map.on('zoomend', function (e) {
+                    report('zoomend')
+                    // console.log('zoomend', report('dragend'))
                 })
             })
         </script>

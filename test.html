@@ -7,13 +7,13 @@
             name="viewport"
             content="initial-scale=1,maximum-scale=1,user-scalable=no"
         />
-        <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js"></script>
+        <!-- <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
         <link
-            href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css"
+            href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css"
             rel="stylesheet"
-        />
+        /> -->
 
-        <script src="https://unpkg.com/@turf/turf/turf.min.js"></script>
+        <!-- <script src="https://unpkg.com/@turf/turf/turf.min.js"></script> -->
 
         <style>
             body {
@@ -32,6 +32,11 @@
     <body>
         <div id="map"></div>
         <script type="module">
+            import mapboxcss from './vendor/mapboxglcss.js'
+            import mapboxgl from './vendor/mapbox-gl.esm.js'
+            // import * as turf from 'https://unpkg.com/@turf/turf/turf.es.js'
+            import * as turf from './node_modules/@turf/turf/turf.es.js'
+
             import util from 'https://backspaces.github.io/agentscript/src/util.js'
             import TwoView from 'https://backspaces.github.io/agentscript/src/TwoView.js'
             import ColorMap from 'https://backspaces.github.io/agentscript/src/ColorMap.js'
@@ -41,6 +46,8 @@
                 bboxCenter,
                 bboxCoords,
             } from './tools.js'
+            document.head.innerHTML += mapboxcss
+
             util.toWindow({ util })
             const grayMap = ColorMap.LightGray
             const basicMap = ColorMap.Basic16
@@ -50,7 +57,7 @@
 
             async function run() {
                 const counties = await util.xhrPromise(
-                    'data/nmcounties.json',
+                    'data/nmcounties.geojson',
                     'json'
                 )
                 const bbox = turf.bbox(counties)
@@ -158,11 +165,13 @@
                                 const name = t.feature
                                     ? t.feature.properties.NAME
                                     : 'No Where'
+                                const population = t.feature
+                                    ? t.feature.properties.population
+                                    : 0
                                 console.log(
-                                    'new feature: turtle',
-                                    t.id,
-                                    'county',
-                                    name
+                                    'new feature: turtle: ' + t.id + ',',
+                                    'county: ' + name + ',',
+                                    'population: ' + population
                                 )
                             }
                         })

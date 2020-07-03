@@ -1,0 +1,31 @@
+document.head.innerHTML += `<link type="text/css" rel="stylesheet" href=./vendor/mapbox-gl.css>`
+
+// async function getCss(url) {
+//     const css = await fetch(url).then(response => response.text())
+//     console.log('got it')
+//     document.head.innerHTML += `<style>
+//   ${css}
+//   </style>`
+// }
+// getCss('./vendor/mapbox-gl.css')
+// console.log(document.head.innerHTML)
+
+// const css = await fetch(url).then(response => response.text())
+// console.log('got it')
+// document.head.innerHTML += `<style>
+//   ${css}
+//   </style>`
+// console.log(document.head.innerHTML)
+
+// fetch('./vendor/mapbox-gl.css')
+//     .then(response => response.text())
+//     .then(data => (document.head.innerHTML += data))
+
+// let css
+// fetch('./vendor/mapbox-gl.css')
+//     .then(response => response.text())
+//     .then(data => (css = data))
+
+// const x = await fetch('./vendor/mapbox-gl.css').then(response =>
+//     response.text()
+// )

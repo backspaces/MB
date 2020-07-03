@@ -90,6 +90,8 @@ https://github.com/mapbox/awesome-vector-tiles
   // style: 'mapbox://styles/mapbox/satellite-v9',
   // style: 'mapbox://styles/mapbox/dark-v10',
   // style: 'mapbox://styles/mapbox/light-v10',
+https://docs.mapbox.com/help/glossary/style-url/
+mapbox://styles/mapbox/streets-v11
 ......................................................................
 Data:
 
@@ -230,10 +232,10 @@ Agent/MB first light: test.html
   - animate
 - tools.js: moved utils from test.html into separate file
 - bin/addFeatureID: use state + county fips rather than index
-- bin/addPopulation: new, merge population data into nmcounties.json
+- bin/addPopulation: new, merge population data into nmcounties.geojson
 - bin/redfish2pop: new, convert steve's csv to json
 - data/nmpopulation.json: json file made from redfish2pop
-- data/nmcounties.json: add population from above, use fips id
+- data/nmcounties.geojson: add population from above, use fips id
 - data/uscounties.json: use fips id
 
 New: test.html: NM counties & MB CanvasSource

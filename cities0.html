@@ -33,6 +33,7 @@
             // geojson converrsion: https://www.convertcsv.com/csv-to-geojson.htm
 
             import util from 'https://backspaces.github.io/agentscript/src/util.js'
+            // feature filter
             import gis from 'https://backspaces.github.io/agentscript/src/gis.js'
             util.toWindow({ util, gis })
 
@@ -69,8 +70,7 @@
 
                     gis.featureFilter(
                         cities,
-                        (feature) =>
-                            feature.properties.population > minPopulation
+                        feature => feature.properties.population > minPopulation
                     )
 
                     map.addLayer({
